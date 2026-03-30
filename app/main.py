@@ -28,7 +28,7 @@ class Group:
 
 
 def write_groups_information(groups: list[Group]) -> int:
-    with open("groups_pickle", "wb") as file:
+    with open("groups.pickle", "wb") as file:
         pickle.dump(groups, file)
 
     if not groups:
@@ -38,7 +38,7 @@ def write_groups_information(groups: list[Group]) -> int:
 
 
 def write_students_information(students: list[Student]) -> int:
-    with open("students_pickle", "wb") as file:
+    with open("students.pickle", "wb") as file:
         pickle.dump(students, file)
 
     return len(students)
@@ -46,7 +46,7 @@ def write_students_information(students: list[Student]) -> int:
 
 def read_groups_information() -> list[str]:
     try:
-        with open("groups_pickle", "rb") as file:
+        with open("groups.pickle", "rb") as file:
             groups = pickle.load(file)
     except FileNotFoundError:
         return []
@@ -56,7 +56,9 @@ def read_groups_information() -> list[str]:
 
 def read_students_information() -> list[Student]:
     try:
-        with open("students_pickle", "rb") as file:
-            return pickle.load(file)
+        with open("students.pickle", "rb") as file:
+            students = pickle.load(file)
     except FileNotFoundError:
         return []
+
+    return students
